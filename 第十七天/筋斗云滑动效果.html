@@ -1,10 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>筋斗云tab栏</title>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>筋斗云tab栏</title>
+    </head>
+    <style type="text/css">
+        * {
+            margin:0;
+            padding: 0
+        }
+        body{
+            background: #1d3435;
+        }
+        div{
+            width: 1200px;
+            height: 42px;
+            background: #ffffff;
+            border-radius: 10px;
+            margin: 150px auto;
+            position: relative;
+        }
+        ul{
+            list-style: none;
+            position: absolute;
+        }
+        li{
+            width: 100px;
+            height: 42px;
+            float: left;
+            display: inline-block;
+            font: 600 15px/42px simsun;
+            text-align: center;
+            cursor: pointer;
+        }
+        span{
+            position: absolute;
+            width: 83px;
+            height: 42px;
+            background: url("cloud.gif") no-repeat;
+            left: 0px;
+            top:0px;
 
-</body>
-</html>
+        }
+    </style>
+    <body>
+    <div>
+        <span class="cloud"></span>
+        <!--//采用占座的方式进行，样式的叠加，将span与ul同时作为div子元素，那么span一定在ul下面-->
+        <ul>
+            <li>清华大学</li>
+            <li>北京大学</li>
+            <li>上海交通大学</li>
+            <li>复旦大学</li>
+            <li>同济大学</li>
+            <li>浙江大学</li>
+            <li>武汉大学</li>
+        </ul>
+        <script type="text/javascript">
+//            有两个需求：1.鼠标onmouseover哪里云彩到哪里，然后返回 2.鼠标点击哪里云彩定在哪里
+            var cloud=document.getElementsByClassName("cloud")[0];
+            var li=document.getElementsByTagName("li");
+            var liLength=li[0].offsetWidth;
+            var count=0;
+               for(var j=0;j<li.length;j++){
+                   li[j].index=j;
+                li[j].onmouseover=function () {
+                    animate(cloud,this.index*liLength)
+                }
+                li[j].onmouseout=function () {
+
+                    animate(cloud,count*liLength)
+                }
+                li[j].onclick=function () {
+                    // alert("1");
+                    count=this.index;
+                    animate(cloud,count*liLength)
+                }
+            }
+
+            function animate(ele,target) {
+                clearInterval(ele.timer);
+                ele.timer=setInterval(function () {
+                    var speed=(target-ele.offsetLeft)/10;
+                    if(speed>0){
+                        speed=Math.ceil(speed);
+                    }else{
+                        speed=Math.floor(speed);
+                    }
+                    ele.style.left=speed+ele.offsetLeft+"px";
+//                    console.log("没完没了");
+                    if (Math.abs(target-ele.offsetLeft)<Math.abs(speed)){
+                        ele.style.left=target+"px";
+                        clearInterval(ele.timer);
+                    }
+
+                },20);
+            }
+        </script>
+    </div>
+    </body>
+    </html>

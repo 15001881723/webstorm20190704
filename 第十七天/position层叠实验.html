@@ -1,0 +1,34 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>看看谁在上面</title>
+        <style type="text/css">
+        .a00{
+            position: relative;
+            width: 1000px;
+            height: 500px;
+        }
+        .b11{
+            position: absolute;
+            width: 200px;
+            height: 10px;
+            background: #39cc19;
+        }
+        .c22{
+            position: absolute;
+            height: 30px;
+            width: 100px;
+            background: #cc160e;
+        }
+    </style>
+    </head>
+
+    <body>
+    <div class="a00">
+        //根据文档流2会覆盖1
+        <div class="b11">1</div>
+        <div class="c22">2</div>
+    </div>
+    </body>
+    </html>

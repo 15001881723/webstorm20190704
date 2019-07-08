@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        body{
+            margin:50px;
+            /**/
+
+        }
+        .wrap{
+            width:300px;
+            height: 300px;
+            background-color: red;
+            left:200px;
+            position:relative;
+        }
+        .inner{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 50px;
+            background-color: blue;
+
+
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div class="wrap" id="wrap" style="left:200px;">
+    <div class="inner" id="inner">
+    </div>
+</div>
+
+<script type="text/javascript">
+    console.log($(".wrap").css("left"));  /*如果父元素中有定位元素，都是相对于上一个定位元素（position不为static）定位。此处相对于body的左边，有单位 200px*/
+    console.log($(".wrap").offset().left);    /*    它永远是相对于文档的左边缘（往往体现为浏览器的左边缘）定位的     没有单位    249.9999999 */
+    console.log(document.getElementById("wrap").offsetLeft);  /*如果没有已经定位的父元素，那么offsetLeft指向的是文档（document）的左边缘   没有单位  250*/
+    console.log(document.getElementById("wrap").style.left);   /*style.left与css（"left"）指向的是body的左边缘*   有单位    200px*/
+
+    console.log($(".inner").css("left"));      /*  相对于上一个定位元素  50px  */
+
+    console.log($(".inner").offset().left);     /*文档的左边缘      没有单位  300*/
+
+    console.log(document.getElementById("inner").offsetLeft);   /*相对于上一级   没有单位 50*/
+    //    console.log("如果style.left没有在内联样式中指定："+document.getElementById("inner").style.left);
+
+
+
+</script>
+</body>
+</html>

@@ -1,10 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> 缓动动画向左向右滑</title>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> 缓动动画向左向右滑</title>
+    </head>
+    <style type="text/css">
+        *{
+            margin: 0;
+            body:0;
+        }
+        body{
 
-</body>
-</html>
+        }
+        div{
+            height: 200px;
+            width: 200px;
+            background: #39cc19;
+            left: 0px;
+            position: absolute;
+        }
+        button{
+            background: #cc160e;
+            height: 20px;
+            width: 60px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <body>
+    <button id="button1">400</button>
+    <button id="button2">200</button>
+    <div id="div">
+        人心齐泰山移
+    </div>
+    <script type="text/javascript">
+        //点击按钮物体缓动到指定位置
+        var div=document.getElementById("div");
+        var button1=document.getElementById("button1");
+        var button2=document.getElementById("button2");
+        var presentPosition=div.offsetLeft;
+        button1.onclick=function () {
+            animate(div,400);
+            console.log(div.offsetLeft);
+        };
+        button2.onclick=function () {
+            animate(div,200);
+            console.log(div.offsetLeft);
+        }
+        function animate(ele,target) {
+            clearInterval(ele.timer);
+            ele.timer=setInterval(function () {
+               var speed=(target-ele.offsetLeft)/20;
+                 if(speed>0){
+                     speed=Math.ceil(speed);
+                 }else{
+                     speed=Math.floor(speed);
+                 }
+                 ele.style.left=speed+ele.offsetLeft+"px";
+                console.log("没完没了");
+                if (Math.abs(target-ele.offsetLeft)<Math.abs(speed)){
+                     ele.style.left=target+"px";
+                     clearInterval(ele.timer);
+                 }
+
+            },100);
+        }
+    </script>
+    </body>
+    </html>
