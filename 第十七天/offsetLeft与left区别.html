@@ -1,0 +1,43 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+        /**{*/
+            /*margin:0;*/
+            /*padding:0;*/
+        /*}*/
+
+        #parent{
+            position: relative;
+            padding: 10px;
+            margin:30px;
+            background-color:#CCC;
+            border: solid 10px #fbc;
+        }
+
+        #child{
+            height: 200px;
+            width: 200px;
+            padding: 10px;
+            margin: 30px;
+            border: solid 10px #fbc;
+            background-color:#afb;
+        }
+    </style>
+    </head>
+         <body>
+            <div id="parent">
+                    <div id="child">
+                    </div>
+              </div>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+
+        var child = $("#child").get(0)
+        console.log( child.offsetLeft);
+        console.log( $("#child").position().left);
+    </script>
+    </body>
+    </html>

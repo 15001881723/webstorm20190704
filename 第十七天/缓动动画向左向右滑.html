@@ -1,10 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> 缓动动画向左向右滑</title>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title> 缓动动画向左向右滑</title>
+    </head>
+    <style type="text/css">
+        *{
+            margin: 0;
+            body:0;
+        }
+        body{
+            position: relative;
+        }
+        div{
+            height: 200px;
+            width: 200px;
+            background: #39cc19;
+            left: 0px;
+            position: absolute;
+        }
+        button{
+            background: #cc160e;
+            height: 20px;
+            width: 60px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <body>
+    <button id="button">200</button>
+    <div id="div">
+        人心齐泰山移
+    </div>
+    <script type="text/javascript">
+        //点击按钮物体缓动到指定位置
+        var div=document.getElementById("div");
+        var button=document.getElementById("button");
+        var presentPosition=div.offsetLeft;
+        button.onclick=function () {
+//            console.log(presentPosition);
+//            div.style.left=div.offsetLeft+10+'px';
+//            console.log( div.style.left);
+            animate(div,400);
+            console.log(div.offsetLeft);
+        }
+        function animate(ele,target) {
+            ele.timer=setInterval(function () {
+               var speed=(target-ele.offsetLeft)/20;
 
-</body>
-</html>
+                ele.offsetLeft=speed+ele.offsetLeft+'px';
+//                console.log(11);
+            },100);
+        }
+    </script>
+    </body>
+    </html>
