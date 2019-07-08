@@ -10,7 +10,7 @@
             body:0;
         }
         body{
-            position: relative;
+
         }
         div{
             height: 200px;
@@ -27,28 +27,41 @@
         }
     </style>
     <body>
-    <button id="button">200</button>
+    <button id="button1">400</button>
+    <button id="button2">200</button>
     <div id="div">
         人心齐泰山移
     </div>
     <script type="text/javascript">
         //点击按钮物体缓动到指定位置
         var div=document.getElementById("div");
-        var button=document.getElementById("button");
+        var button1=document.getElementById("button1");
+        var button2=document.getElementById("button2");
         var presentPosition=div.offsetLeft;
-        button.onclick=function () {
-//            console.log(presentPosition);
-//            div.style.left=div.offsetLeft+10+'px';
-//            console.log( div.style.left);
+        button1.onclick=function () {
             animate(div,400);
+            console.log(div.offsetLeft);
+        };
+        button2.onclick=function () {
+            animate(div,200);
             console.log(div.offsetLeft);
         }
         function animate(ele,target) {
+            clearInterval(ele.timer);
             ele.timer=setInterval(function () {
                var speed=(target-ele.offsetLeft)/20;
+                 if(speed>0){
+                     speed=Math.ceil(speed);
+                 }else{
+                     speed=Math.floor(speed);
+                 }
+                 ele.style.left=speed+ele.offsetLeft+"px";
+                console.log("没完没了");
+                if (Math.abs(target-ele.offsetLeft)<Math.abs(speed)){
+                     ele.style.left=target+"px";
+                     clearInterval(ele.timer);
+                 }
 
-                ele.offsetLeft=speed+ele.offsetLeft+'px';
-//                console.log(11);
             },100);
         }
     </script>
