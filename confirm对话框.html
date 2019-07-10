@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>confirm对话框</title>
+</head>
+<body>
+<script type="text/javascript">
+    function aaa() {
+        var answer=confirm("你确定打开百度吗？")
+        if(answer){
+            window.location="http://baidu.com";
+        }
+    }
+    setTimeout(aaa,1000);
+
+</script>
+</body>
+</html>

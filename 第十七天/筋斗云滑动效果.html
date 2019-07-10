@@ -68,16 +68,13 @@
                     animate(cloud,this.index*liLength)
                 }
                 li[j].onmouseout=function () {
-
                     animate(cloud,count*liLength)
                 }
                 li[j].onclick=function () {
-                    // alert("1");
                     count=this.index;
                     animate(cloud,count*liLength)
                 }
             }
-
             function animate(ele,target) {
                 clearInterval(ele.timer);
                 ele.timer=setInterval(function () {
@@ -93,7 +90,6 @@
                         ele.style.left=target+"px";
                         clearInterval(ele.timer);
                     }
-
                 },20);
             }
         </script>
