@@ -2,27 +2,89 @@
     <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>两侧跟随广告</title>
+        <title> 小火箭返回头部</title>
         <style type="text/css">
-         .a1{
-             /*position: fixed;*/
-             position: absolute;
-             left:0;
-             top: 100px;
-         }
-         .a2{
-             /*position: fixed;*/
-             position: absolute;
-             right:0;
-             top: 100px;
-         }
-         .cont{
-             margin: 20px 500px;
+          
+            .cont{
+                margin: 20px 500px;
+            }
+            /*img{*/
+                /*position: fixed;*/
+                /*bottom: 10px;*/
+                /*right: 10px;*/
+            /*}*/
+            .hidden{
+                display: none;
+            }
+            .show{
+                display: block;
+                width: 3%;
+                height: 4%;
+                position: absolute;
+                right: 10px;
+                bottom: 200px;
+
             }
         </style>
+        <script type="text/javascript">
+            window.onload=function () {
+            var littlerocket=document.getElementsByTagName('img')[0];
+                var target=0;
+                var timer=null;
+                var  value=0;
+            window.onscroll=function () {
+                var value=scroll().top;
+                if (value>200){
+                    littlerocket.className='show';
+                }else{
+                    littlerocket.className='hidden';
+
+                }
+
+            }
+
+                littlerocket.onclick=function () {
+                    clearInterval(timer);
+                    timer=setInterval(function () {
+                     var step=(target-value)/20;
+                     if (step>0){
+                         step=Math.ceil(step);
+                     }else{
+                         step=Math.floor(step);
+                     }
+                        value=value+step;
+                     window.scrollTo(0,value);
+                     console.log(00);
+                     if (value==0){
+                         clearInterval(timer);
+                     }
+                    },20)
+
+                }
+
+            }
+            function scroll() {  // 开始封装自己的scrollTop
+                if(window.pageYOffset != null) {  // ie9+ 高版本浏览器
+                    // 因为 window.pageYOffset 默认的是  0  所以这里需要判断
+                    return {
+                        left: window.pageXOffset,
+                        top: window.pageYOffset
+                    }
+                }
+                else if(document.compatMode === "CSS1Compat") {    // 标准浏览器   来判断有没有声明DTD
+                    return {
+                        left: document.documentElement.scrollLeft,
+                        top: document.documentElement.scrollTop
+                    }
+                }
+                return {   // 未声明 DTD
+                    left: document.body.scrollLeft,
+                    top: document.body.scrollTop
+                }
+            }
+        </script>
     </head>
     <body>
-    <img src="images/aside.jpg" class="a1" alt="">
     <div class="cont">
         我是首页<br>
         关关雎鸠在河之洲，窈窕淑女君子好逑。。。。。。《诗经》<br>
@@ -126,56 +188,6 @@
         关关雎鸠在河之洲，窈窕淑女君子好逑。。。。。。《诗经》<br>
 
     </div>
-    <img src="images/aside.jpg" class="a2" alt="">
-    <script type="text/javascript">
-
-     var img1=document.getElementsByClassName('a1')[0];
-     var img2=document.getElementsByClassName('a2')[0];
-     var cont1=document.getElementsByClassName('cont')[0];
-
-     window.onscroll=function () {
-         var value=scroll().top;
-         animate(img1,value+100);
-         animate(img2,value+100);
-
-     }
-
-        function animate(ele,target) {//缓动函数
-            clearInterval(ele.timer);
-            ele.timer=setInterval(function () {
-                var speed=(target-ele.offsetTop)/10;
-                if(speed>0){
-                    speed=Math.ceil(speed);
-                }else{
-                    speed=Math.floor(speed);
-                }
-                ele.style.top=speed+ele.offsetTop+"px";
-//                    console.log("没完没了");
-                if (Math.abs(target-ele.offsetTop)<Math.abs(speed)){
-                    ele.style.top=target+"px";
-                    clearInterval(ele.timer);
-                }
-            },20);
-        }
-        function scroll() {  // 开始封装自己的scrollTop
-            if(window.pageYOffset != null) {  // ie9+ 高版本浏览器
-                // 因为 window.pageYOffset 默认的是  0  所以这里需要判断
-                return {
-                    left: window.pageXOffset,
-                    top: window.pageYOffset
-                }
-            }
-            else if(document.compatMode === "CSS1Compat") {    // 标准浏览器   来判断有没有声明DTD
-                return {
-                    left: document.documentElement.scrollLeft,
-                    top: document.documentElement.scrollTop
-                }
-            }
-            return {   // 未声明 DTD
-                left: document.body.scrollLeft,
-                top: document.body.scrollTop
-            }
-        }
-    </script>
+    <img src="images/littlerocket.png"  class="hidden" alt="">
     </body>
     </html>

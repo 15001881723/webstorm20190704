@@ -1,0 +1,76 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>固定导航栏</title>
+        <style type="text/css">
+            div{
+                /*margin: 0 auto;*/
+                width: 100%;
+            }
+             .a1{
+                margin: 0 200px;
+
+            }
+             .a2{
+                 margin: 0 200px;
+                 overflow: hidden;
+            }
+             .a3{
+                margin: 0 407px;
+            }
+            .fixed{
+                position: fixed;
+                left: 200px;
+                top:0;
+            }
+        </style>
+        <script type="text/javascript">
+            //需求点：1.从上到下第二张图片，将淹没时候，就必须及时定位
+//                   2.但是下面的第三张图片可以继续向上滑动
+            window.onload=function () {
+               var topHead=document.getElementsByClassName('a1')[0];
+                var topHeight=topHead.offsetHeight;
+                var a2=document.getElementsByClassName('a2')[0];
+                var a3=document.getElementsByClassName('a3')[0];
+                window.onscroll=function () {
+                    if (scroll().top>topHeight){
+                        a2.className="fixed";//长见识了。这个不用写style，className不需要加style
+                        a3.style.paddingTop= 80+"px";
+                    }else{
+                        a2.className="a2";
+                        a3.style.paddingTop= 0+"px";
+                    }
+                }
+
+
+                function scroll() {  // 开始封装自己的scrollTop
+                    if(window.pageYOffset != null) {  // ie9+ 高版本浏览器
+                        // 因为 window.pageYOffset 默认的是  0  所以这里需要判断
+                        return {
+                            left: window.pageXOffset,
+                            top: window.pageYOffset
+                        }
+                    }
+                    else if(document.compatMode === "CSS1Compat") {    // 标准浏览器   来判断有没有声明DTD
+                        return {
+                            left: document.documentElement.scrollLeft,
+                            top: document.documentElement.scrollTop
+                        }
+                    }
+                    return {   // 未声明 DTD
+                        left: document.body.scrollLeft,
+                        top: document.body.scrollTop
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+    <div>
+        <div  class="a1 "><img src="images/top.png"  alt=""></div>
+        <div class="a2"><img src="images/nav.png"  alt=""></div>
+        <div  class="a3"><img src="images/main.png"  alt=""></div>
+    </div>
+    </body>
+    </html>
