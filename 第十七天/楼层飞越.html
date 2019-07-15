@@ -1,0 +1,75 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>楼层飞跃</title>
+
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            li{
+                list-style: none;
+            }
+            ol{
+                position: fixed;
+                left: 20px;
+                top: 50px;
+            }
+            ol li{
+                width: 50px;
+                height: 50px;
+                border: 1px solid #cccccc;
+                font: 600 18px/50px simsun;
+                text-align: center;
+            }
+            body,html {
+              height: 100%;
+            }
+
+            ul{
+                height: 100%;
+
+            }
+            ul li {
+                display: block;
+                height: 100%;
+                /*background: #39cc19;*/
+            }
+        </style>
+    </head>
+    <body>
+
+        <ul>
+            <li>红区</li>
+            <li>黄区</li>
+            <li>蓝区</li>
+            <li>绿区</li>
+        </ul>
+        <ol>
+            <li>红</li>
+            <li>黄</li>
+            <li>蓝</li>
+            <li>绿</li>
+
+        </ol>
+        <script type="text/javascript">
+
+                var ol=document.getElementsByTagName('ol')[0];
+                var ul=document.getElementsByTagName('ul')[0];
+                var olLiArr=ol.children;
+                var ulLiArr=ul.children;
+//                console.log(ulLiArr);
+                var color=["red","yellow","blue","green"];
+                for(var i=0;i<ul.length;i++){
+                    ulLiArr[i].style.backgroundColor=color[i];
+                    olLiArr[i].style.backgroundColor=color[i];
+                }
+
+
+
+
+        </script>
+    </body>
+    </html>
