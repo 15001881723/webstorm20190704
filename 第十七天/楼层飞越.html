@@ -23,6 +23,7 @@
                 border: 1px solid #cccccc;
                 font: 600 18px/50px simsun;
                 text-align: center;
+                cursor: pointer;
             }
             body,html {
               height: 100%;
@@ -60,15 +61,45 @@
                 var ul=document.getElementsByTagName('ul')[0];
                 var olLiArr=ol.children;
                 var ulLiArr=ul.children;
-//                console.log(ulLiArr);
                 var color=["red","yellow","blue","green"];
-                for(var i=0;i<ul.length;i++){
+                var target=0;
+                var value1=0;
+                var timer=null;
+                for(var i=0;i<ulLiArr.length;i++){
                     ulLiArr[i].style.backgroundColor=color[i];
                     olLiArr[i].style.backgroundColor=color[i];
                 }
+            //需求：1.点击左边小方块的颜色，跳转到相应的颜色区域
+            //知识点:window.scrollTo(X,Y) 还有window.scroll,这个函数监控滚动条上下左右移动
+
+            //1,2获取事件及相关元素，绑定事件
+            for(var j=0;j<ulLiArr.length;j++){
+                olLiArr[j].index=j;
+                olLiArr[j].onclick=function () {
+                    clearInterval(timer);
+                    target=ulLiArr[this.index].offsetTop;
+                    timer=setInterval(function () {
+
+                      var step=(target-value1)/20;
+                      if (step>0){
+                          step=Math.ceil(step);
+                      }else{
+                          step=Math.floor(step);
+                      }
+                        value1=value1+step;
+                        window.scrollTo(0,value1);
+
+                        console.log("1");
+                        if (Math.abs(target-value1)<=Math.abs(step)){
+                            window.scrollTo(0,target);
+                            clearInterval(timer);
+                        }
+
+                  },25)
 
 
-
+                }
+            }
 
         </script>
     </body>
