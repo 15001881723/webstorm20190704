@@ -89,15 +89,12 @@
                         value1=value1+step;
                         window.scrollTo(0,value1);
 
-                        console.log("1");
                         if (Math.abs(target-value1)<=Math.abs(step)){
                             window.scrollTo(0,target);
                             clearInterval(timer);
                         }
-
+                        console.log("1");
                   },25)
-
-
                 }
             }
 
