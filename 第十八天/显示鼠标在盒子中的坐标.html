@@ -1,0 +1,38 @@
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>显示鼠标在盒子中的坐标</title>
+        </head>
+        <style type="text/css">
+            div{
+                height: 500px;
+                width: 550px;
+                border: 1px solid #cccccc;
+                background-color: #87ff38;
+                color: black;
+                font:500 18px/248px simsum;
+                cursor: pointer;
+                text-align: center;
+                margin: 100px auto;
+            }
+        </style>
+        <body>
+            <div>
+                鼠标的X方向的位置是:<br>
+                鼠标的Y方向的位置是:
+
+            </div>
+            <script type="text/javascript">
+//                <!--这里需要采用mosemove函数，这个函数的特性是，哪怕scroll移动一像素就能触动该函数-->
+//                鼠标在盒子中的位置=鼠标到页面的位置-盒子到页面的位置   也就是pageY
+                var div=document.getElementsByTagName("div")[0];
+                var mousex=0;
+                var mousey=0;
+                div.mousemove=function (event) {
+                    event=event||window.even
+                }
+
+            </script>
+        </body>
+        </html>
