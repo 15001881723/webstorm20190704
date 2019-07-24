@@ -14,17 +14,90 @@
                 border: 1px solid #cccccc;
                 background-color: #87ff38;
                 font: 600 18px/50px simsum;
+                position: absolute;
+                cursor: pointer;
+            }
+            body{
+                height: 5000px;
             }
         </style>
 
     </head>
     <body>
     <div>
-        跟屁虫
+
     </div>
     <script type="text/javascript">
+        //需求：鼠标点在哪里，那个跟屁虫就跟到哪里
+        //1.首先获取鼠标在浏览器中的位置
+        //2.设置移动的定时器
       var div=document.getElementsByTagName("div")[0];
+      var targetx=0;
+      var valuex=0;
+      var targety=0;
+      var valuey=0;
+      var timer=null;
 
+      document.onclick=function (event) {
+          event=event||window.event;
+          var pagex=event.pageX||scroll().left+event.clientX;
+          var pagey=event.pageY||scroll().top+event.clientY;
+          targetx=pagex-70;
+          targety=pagey-70;
+
+          clearInterval(timer);
+          timer=setInterval(function () {
+              valuex=div.offsetLeft;
+              valuey=div.offsetTop;
+
+              var step=(targetx-valuex)/10;
+              if (step>0){
+                  step=Math.ceil(step);
+              }else{
+                 step=Math.floor(step);
+              };
+              valuex=valuex+step;
+              div.style.left=valuex+"px";
+
+
+              var step1=(targety-valuey)/10;
+              if (step1>0){
+                  step1=Math.ceil(step1);
+              }else{
+                  step1=Math.floor(step1);
+              };
+              valuey=valuey+step1;
+              div.style.top=valuey+"px";
+                //              if(Math.abs(targety-valuey)<Math.abs(step1)){
+                //                  clearInterval(timer);
+                //                  div.style.top=targety+"px";
+                //              };
+                //定时器清除不能清除两次，清除两次会造成点击两次才达到指定位置，也可以写在一起
+//              console.log("y方向监测1122");
+          },10)
+      }
+
+
+
+        function scroll() {  // 开始封装自己的scrollTop
+            if(window.pageYOffset != null) {  // ie9+ 高版本浏览器
+                // 因为 window.pageYOffset 默认的是  0  所以这里需要判断
+                return {
+                    left: window.pageXOffset,
+                    top: window.pageYOffset
+                }
+            }
+            else if(document.compatMode === "CSS1Compat") {    // 标准浏览器   来判断有没有声明DTD
+                return {
+                    left: document.documentElement.scrollLeft,
+                    top: document.documentElement.scrollTop
+                }
+            }
+            return {   // 未声明 DTD
+                left: document.body.scrollLeft,
+                top: document.body.scrollTop
+            }
+        }
     </script>
     </body>
     </html>

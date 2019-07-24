@@ -27,12 +27,36 @@
 //                <!--这里需要采用mosemove函数，这个函数的特性是，哪怕scroll移动一像素就能触动该函数-->
 //                鼠标在盒子中的位置=鼠标到页面的位置-盒子到页面的位置   也就是pageY
                 var div=document.getElementsByTagName("div")[0];
-                var mousex=0;
-                var mousey=0;
-                div.mousemove=function (event) {
-                    event=event||window.even
+                div.onmousemove=function (event) {
+                    event=event||window.event
+                    //首先获取鼠标在页面的位置坐标，然后获取盒子的坐标，用鼠标在页面的坐标减去盒子的坐标就是在盒子中的坐标
+                    var mouseX=event.pageX||(scroll().left+event.clientX);
+                    var mouseY=event.pageY||(scroll().top+event.clientY);
+                    //盒子的位置
+                    var divX=div.offsetLeft;
+                    var divY=div.offsetTop;
+                    this.innerHTML="X的坐标为："+(mouseX-divX)+"px;<br>Y的坐标为："+(mouseY-divY)+"px";
+//                    console.log("X的坐标为："+(divX-mouseX)+"<br>Y的坐标为："+(divY-mouseY));
                 }
-
+                function scroll() {  // 开始封装自己的scrollTop
+                    if(window.pageYOffset != null) {  // ie9+ 高版本浏览器
+                        // 因为 window.pageYOffset 默认的是  0  所以这里需要判断
+                        return {
+                            left: window.pageXOffset,
+                            top: window.pageYOffset
+                        }
+                    }
+                    else if(document.compatMode === "CSS1Compat") {    // 标准浏览器   来判断有没有声明DTD
+                        return {
+                            left: document.documentElement.scrollLeft,
+                            top: document.documentElement.scrollTop
+                        }
+                    }
+                    return {   // 未声明 DTD
+                        left: document.body.scrollLeft,
+                        top: document.body.scrollTop
+                    }
+                }
             </script>
         </body>
         </html>
