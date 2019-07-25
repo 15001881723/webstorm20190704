@@ -1,0 +1,173 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>滚动条制作</title>
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding:0;
+            }
+        .box{
+            border:1px solid #cccccc;
+            height: 500px;
+            width: 300px;
+            overflow: hidden;
+            margin: 100px;
+        }
+        .content{
+            height: 500px;
+
+            position: relative;
+        }
+        .scroll{
+            height: 500px;
+            width: 22px;
+            background: #adf3ff;
+            position:absolute;
+            right:0;
+            top:0;
+        }
+        .bar{
+            /*height: 90px;*/
+            width: 22px;
+            background: #ff29e0;
+            border-radius: 10px;
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+        }
+        .head{
+            background: #3220ff;
+            color: #ff309a;
+            height: 30px;
+            font: 600 18px/30px simsun;
+        }
+        .text{
+            width: 278px;
+
+        }
+        .close{
+            float: right;
+        }
+    </style>
+        <script type="text/javascript">
+            window.onload=function () {
+        //需求：划动红色bar使内容跟着一起动
+        //涉及到的知识点：1.鼠标滑动，红色bar跟着滑动  2.比例问题：A.bar滑动的比例与文本滑动的比例    3.onmousemove  与onmouseover
+        //1.获取事件源与相关属性；2.绑定事件 3.
+        //首先做一做bar随着鼠标在水蓝条带上的自由滑动
+                 var box=document.getElementsByClassName("box")[0];
+                 var content=document.getElementsByClassName("content")[0];
+                 var scroll=document.getElementsByClassName("scroll")[0];
+                 var bar=document.getElementsByClassName("bar")[0];
+                 var text=document.getElementsByClassName("text")[0];
+                var head=document.getElementsByClassName("head")[0];
+             //计算bar的高度，有一个等比例的计算公式：文本的高度/content的高度=scroll的高度/bar的高度
+                var barHeight=content.offsetHeight*scroll.offsetHeight/text.offsetHeight;
+              bar.style.height=barHeight+"px";
+              bar.onmousedown=function (event) {
+//              获取鼠标按下的位置
+                  event=event||window.event;
+                  var mouseY=event.pageY||scroll().top+event.clientY;
+                  var innerY=mouseY-bar.offsetTop;
+
+                  console.log("innerY  "+innerY)
+                bar.onmousemove=function (event) {
+                      event=event||window.event;
+//                      var mouseX=event.pageX||scroll().left+event.clientX;
+                      var mouseY=event.pageY||scroll().top+event.clientY;
+                      var y=mouseY-innerY;
+                      if(y<0){
+                            y=0;
+                      }else if(y>scroll.offsetHeight-bar.offsetHeight){
+                            y=scroll.offsetHeight-bar.offsetHeight;
+                      }
+                   bar.style.top=y+"px";
+                    //高级比例：  内容走的距离/bar走的距离 = （内容的高-大盒子的高）/（scroll的高-bar的高）
+
+                    var textY=y*(text.offsetHeight-content.offsetHeight)/(scroll.offsetHeight-bar.offsetHeight);
+
+
+                    //将值付给text的margin赋值为负就行
+                    text.style.marginTop=-textY+"px";
+                    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                  }
+              }
+              bar.onmouseup=function () {
+                  bar.onmousemove='null';
+              }
+                function scroll() {  // 开始封装自己的scrollTop
+                    if(window.pageYOffset != null) {  // ie9+ 高版本浏览器
+                        // 因为 window.pageYOffset 默认的是  0  所以这里需要判断
+                        return {
+                            left: window.pageXOffset,
+                            top: window.pageYOffset
+                        }
+                    }
+                    else if(document.compatMode === "CSS1Compat") {    // 标准浏览器   来判断有没有声明DTD
+                        return {
+                            left: document.documentElement.scrollLeft,
+                            top: document.documentElement.scrollTop
+                        }
+                    }
+                    return {   // 未声明 DTD
+                        left: document.body.scrollLeft,
+                        top: document.body.scrollTop
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+  <div class="box">
+        <div class="head">
+                <span>古诗鉴赏</span>
+                <span class="close">关闭</span>
+        </div>
+        <div class="content">
+            <div class="scroll">
+                <div class="bar"></div>
+            </div>
+            <div class="text">
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+    </div>
+      </div>
+</div>
+    </body>
+    </html>
