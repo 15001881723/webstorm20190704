@@ -59,12 +59,12 @@
         //首先做一做bar随着鼠标在水蓝条带上的自由滑动
                  var box=document.getElementsByClassName("box")[0];
                  var content=document.getElementsByClassName("content")[0];
-                 var scroll=document.getElementsByClassName("scroll")[0];
+                 var scroll1=document.getElementsByClassName("scroll")[0];
                  var bar=document.getElementsByClassName("bar")[0];
                  var text=document.getElementsByClassName("text")[0];
                 var head=document.getElementsByClassName("head")[0];
              //计算bar的高度，有一个等比例的计算公式：文本的高度/content的高度=scroll的高度/bar的高度
-                var barHeight=content.offsetHeight*scroll.offsetHeight/text.offsetHeight;
+                var barHeight=content.offsetHeight*scroll1.offsetHeight/text.offsetHeight;
               bar.style.height=barHeight+"px";
               bar.onmousedown=function (event) {
 //              获取鼠标按下的位置
@@ -80,13 +80,13 @@
                       var y=mouseY-innerY;
                       if(y<0){
                             y=0;
-                      }else if(y>scroll.offsetHeight-bar.offsetHeight){
-                            y=scroll.offsetHeight-bar.offsetHeight;
+                      }else if(y>scroll1.offsetHeight-bar.offsetHeight){
+                            y=scroll1.offsetHeight-bar.offsetHeight;
                       }
                    bar.style.top=y+"px";
                     //高级比例：  内容走的距离/bar走的距离 = （内容的高-大盒子的高）/（scroll的高-bar的高）
 
-                    var textY=y*(text.offsetHeight-content.offsetHeight)/(scroll.offsetHeight-bar.offsetHeight);
+                    var textY=y*(text.offsetHeight-content.offsetHeight)/(scroll1.offsetHeight-bar.offsetHeight);
 
 
                     //将值付给text的margin赋值为负就行
@@ -97,7 +97,7 @@
               bar.onmouseup=function () {
                   bar.onmousemove='null';
               }
-                function scroll() {  // 开始封装自己的scrollTop
+              function scroll() {  // 开始封装自己的scrollTop
                     if(window.pageYOffset != null) {  // ie9+ 高版本浏览器
                         // 因为 window.pageYOffset 默认的是  0  所以这里需要判断
                         return {
