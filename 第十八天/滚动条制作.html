@@ -16,9 +16,9 @@
             margin: 100px;
         }
         .content{
-            height: 470px;
+            height: 500px;
+
             position: relative;
-            overflow: hidden;
         }
         .scroll{
             height: 500px;
@@ -26,7 +26,7 @@
             background: #adf3ff;
             position:absolute;
             right:0;
-            top:0px;
+            top:0;
         }
         .bar{
             /*height: 90px;*/
@@ -43,10 +43,10 @@
             height: 30px;
             font: 600 18px/30px simsun;
         }
-        /*.text{*/
-            /*width: 278px;*/
+        .text{
+            width: 278px;
 
-        /*}*/
+        }
         .close{
             float: right;
         }
@@ -64,19 +64,14 @@
                  var text=document.getElementsByClassName("text")[0];
                 var head=document.getElementsByClassName("head")[0];
              //计算bar的高度，有一个等比例的计算公式：文本的高度/content的高度=scroll的高度/bar的高度
-              var barHeight=content.offsetHeight*scroll.offsetHeight/text.offsetHeight;
+                var barHeight=content.offsetHeight*scroll.offsetHeight/text.offsetHeight;
               bar.style.height=barHeight+"px";
-
-
-
               bar.onmousedown=function (event) {
 //              获取鼠标按下的位置
                   event=event||window.event;
-
                   var mouseY=event.pageY||scroll().top+event.clientY;
                   var innerY=mouseY-bar.offsetTop;
-                  console.log(" mouseY  "+ mouseY)
-                  console.log("bar.offsetTop"+bar.offsetTop);
+
                   console.log("innerY  "+innerY)
                 bar.onmousemove=function (event) {
                       event=event||window.event;
@@ -96,16 +91,12 @@
 
                     //将值付给text的margin赋值为负就行
                     text.style.marginTop=-textY+"px";
-//                    text.style.marginTop=-textY+"px";
-                    window.getSelection?window.getSelection().removeAllRanges():document.selection.empty();
+                    window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
                   }
               }
               bar.onmouseup=function () {
-                  bar.onmousemove=null;
+                  bar.onmousemove='null';
               }
-
-
-
                 function scroll() {  // 开始封装自己的scrollTop
                     if(window.pageYOffset != null) {  // ie9+ 高版本浏览器
                         // 因为 window.pageYOffset 默认的是  0  所以这里需要判断
@@ -139,46 +130,42 @@
                 <div class="bar"></div>
             </div>
             <div class="text">
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黄沙百战穿金甲，映日荷花别样红<br>
-        男儿立志出乡关，事不成功誓不还<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黄沙百战穿金甲，映日荷花别样红<br>
-        男儿立志出乡关，事不成功誓不还<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黄沙百战穿金甲，映日荷花别样红<br>
-        男儿立志出乡关，事不成功誓不还<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黄沙百战穿金甲，映日荷花别样红<br>
-        男儿立志出乡关，事不成功誓不还<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黄沙百战穿金甲，映日荷花别样红<br>
-        男儿立志出乡关，事不成功誓不还<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黄沙百战穿金甲，映日荷花别样红<br>
-        男儿立志出乡关，事不成功誓不还<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黄沙百战穿金甲，映日荷花别样红<br>
-        男儿立志出乡关，事不成功誓不还<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黄沙百战穿金甲，映日荷花别样红<br>
-        男儿立志出乡关，事不成功誓不还<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黄沙百战穿金甲，映日荷花别样红<br>
-        男儿立志出乡关，事不成功誓不还<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黄沙百战穿金甲，映日荷花别样红<br>
-        男儿立志出乡关，事不成功誓不还<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黄沙百战穿金甲，映日荷花别样红<br>
-        男儿立志出乡关，事不成功誓不还<br>
-        黑云压城城欲摧，甲光向日金鳞开<br>
-        黄沙百战穿金甲，映日荷花别样红<br>
-        男儿立志出乡关，事不成功誓不还<br>
-        -------------end-----------<br>
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
+        黑云压城城欲摧，甲光向日金鳞开
+        黄沙百战穿金甲，映日荷花别样红
+        男儿立志出乡关，事不成功誓不还
     </div>
       </div>
 </div>
