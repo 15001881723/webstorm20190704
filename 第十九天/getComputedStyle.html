@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset=" utf-8">
+    <meta name="author" content="http://www.softwhy.com/" />
+    <title>getComputedStyle使用</title>
+    <style type="text/css">
+        div{
+            width:100px;
+            height:100px;
+            margin-top:20px;
+        }
+        #first{background-color:red}
+        #first::before{
+            content:"添加的内容";
+            color:#0000ff;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var first=document.getElementById("first");
+            var second=document.getElementById("second");
+            alert(window.getComputedStyle(first,":before").color);
+        }
+    </script>
+</head>
+<body>
+<div id="first"></div>
+<div id="second" style="background-color:blue"></div>
+</body>
+</html>
