@@ -1,10 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>模态框隐藏</title>
+        <style type="text/css">
+            .mask{
+                position: fixed;
+                top:0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(83, 221, 192, 0.24);
+                display: none;
+            }
+            .login{
+                width: 400px;
+                height: 250px;
+                background: #ffffff;
+                margin: 400px;
+            }
+            a{
+                display: block;
+                height: 20px;
+                width: 60px;
+                border: 1px solid #000000;
+            }
+        </style>
+    </head>
+    <body>
+    <a href="#">login</a>
+    <div class="mask">
+        <div class="login" id="123"></div>
+    </div>
+    <script type="text/javascript">
+       var mask=document.getElementsByClassName("mask")[0];
+       var login=document.getElementsByClassName("login")[0];
+       var a1=document.getElementsByTagName("a")[0];
+         a1.onclick=function (event) {
+             mask.style.display='block';
+             console.log("1122")
+             event=event||window.event;
+             if(event&&event.stopPropagation){
+                 event.stopPropagation();
+             }else{
+                 event.cancelBubble=true;
+             }
+         }
 
-</body>
-</html>
+         document.onclick=function (event) {
+             event=event||window.event;
+             if (event.target){//兼容获取事件触动时，被传递过来的对象
+                 var aa=event.target;//兼容获取事件触动时，被传递过来的对象
+             }else{//兼容获取事件触动时，被传递过来的对象
+                 var aa=event.srcElement;//兼容获取事件触动时，被传递过来的对象
+             }//兼容获取事件触动时，被传递过来的对象
+             if(aa.id!=='123'){
+                 mask.style.display='none';
+             }
+         }
+    </script>
+    </body>
+    </html>

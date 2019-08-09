@@ -79,7 +79,6 @@
                     clearInterval(timer);
                     target=ulLiArr[this.index].offsetTop;
                     timer=setInterval(function () {
-
                       var step=(target-value1)/20;
                       if (step>0){
                           step=Math.ceil(step);
@@ -88,7 +87,6 @@
                       }
                         value1=value1+step;
                         window.scrollTo(0,value1);
-
                         if (Math.abs(target-value1)<=Math.abs(step)){
                             window.scrollTo(0,target);
                             clearInterval(timer);

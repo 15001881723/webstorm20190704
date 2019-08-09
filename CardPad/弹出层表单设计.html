@@ -1,0 +1,69 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>弹出层表单设计</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+    </head>
+    <body>
+    <div class="layui-input-inline">
+        <button type="button" οnclick="selectRole()" class="layui-btn layui-btn-primary layui-btn-radius">选择角色</button>
+    </div>
+
+    <div class="layui-row" id="popSearchRoleTest" style="display:none;">
+        <div class="layui-col-md11">
+            <form class="layui-form" lay-filter="formTestFilter2121" >
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="userName"  class="layui-input">
+                    </div>
+                    <label class="layui-form-label">密码：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="password"  class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">角色：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="roleName" class="layui-input">
+                    </div>
+                    <div class="layui-input-inline">
+                        <button οnclick="selectRole()" class="layui-btn layui-btn-primary layui-btn-radius">选择角色</button>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">备注：</label>
+                    <div class="layui-input-block">
+                        <textarea placeholder="请输入内容" class="layui-textarea" name="userDescription"></textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button type="button" class="layui-btn layui-btn-normal">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript"src="layui/layui.js" charset="utf-8"></script>
+    <script src="jquery3.min.js"> </script>
+    <script type="text/javascript">
+        layui.use('layer', function (){
+                layer.open({
+                    //layer提供了5种层类型。可传入的值有：0（信息框，默认）1（页面层）2（iframe层）3（加载层）4（tips层）
+                    type:1,
+                    title:"查找用户角色",
+                    area: ['50%','50%'],
+                    content:$("#popSearchRoleTest").html()
+                });
+            });
+
+
+    </script>
+    </body>
+    </html>

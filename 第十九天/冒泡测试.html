@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>冒泡测试</title>
+</head>
+<body οnclick="alert('body');">
+
+<div οnclick="clickBtn(event)"  style="width:100px;height:100px; background:#666;">
+    <input id="Button1" type="button" value="button" οnclick="alert('btn');" />
+</div>
+<script language="javascript" type="text/javascript">
+    function clickBtn(event)
+    {
+        event=event?event:window.event;
+        event.stopPropagation();
+        alert("OK");
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>layui</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+        <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    </head>
+    <body>
+    <div style="padding: 20px; background-color:#0171ff;">
+        <div class="layui-row layui-col-space15 bigBox">
+            <div class="layui-col-md2 smallBox" >
+                <div class="layui-card"  style="border-radius: .5rem;">
+                    <div class="layui-card-header">卡片面板</div>
+                    <div style="display:inline-flex;">
+                        <div class="layui-card-body">
+                        结合 layui 的栅格系统<br>
+                        轻松实现响应式布局
+                    </div>
+                        <div style="padding-left: 30px;padding-top: 30px">
+
+
+                                <a class="layui-btn layui-btn-xs " data-toggle="modal" data-target="#CaptialPlanEditModal1" id="editor">
+                                    编辑
+                                </a>
+                            <a class="layui-btn layui-btn-xs " data-toggle="modal" data-target="#CaptialPlanEditModal0" id="delete">
+                               删除
+                            </a>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript"src="layui/layui.js" charset="utf-8"></script>
+    <script src="jquery3.min.js"> </script>
+    <script ype="text/javascript">
+        layui.use('layer', function(){
+        var layer = layui.layer;
+//        layer.msg('hello');
+
+        });</script>
+
+
+    <script type="text/javascript">
+
+
+        var bigBox=document.getElementsByClassName("bigBox")[0];
+        var smallBox=document.getElementsByClassName("smallBox")[0];
+        var number=12;//你所需要的次数，12只是一个随意值
+        var editor=document.getElementById("editor");
+        var CaptialPlanEditModal1=document.getElementById("CaptialPlanEditModal1");
+        editor.onclick=function () {
+            CaptialPlanEditModal1.style.display="block";
+        }
+        for(var i=0;i<number;i++){
+            var newBox=smallBox.cloneNode(true);
+            bigBox.appendChild(newBox)
+        }
+
+
+
+
+
+
+    </script>
+
+    </body>
+    </html>

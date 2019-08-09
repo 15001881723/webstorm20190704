@@ -1,0 +1,177 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>layui</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="layui/css/layui.css"  media="all">
+        <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+        <style type="text/css">
+            .layui-button-edit{
+                padding: 0 6px;
+                height: 28px;
+                line-height: 28px;
+            }
+            .layui-button-delete{
+                padding: 0 6px;
+                height: 28px;
+                line-height: 28px;
+                background: #ff1e1e;
+            }
+        /*.new .layui-button-edit{*/
+                /*padding: 10px 0;*/
+        /*}*/
+        </style>
+    </head>
+    <body>
+    <div style="padding: 20px; background-color:#0171ff;">
+        <div class="layui-row layui-col-space15 bigBox">
+            <div class="layui-col-md2 smallBox" >
+                <div class="layui-card"  style="border-radius: .5rem;">
+                    <div class="layui-card-header">卡片面板</div>
+                    <div style="display:inline-flex;">
+                        <div class="layui-card-body">
+                            结合 layui 的栅格系统<br>
+                            轻松实现响应式布局
+                        </div>
+
+                        <div style="padding-left: 5px;padding-top: 30px;display: inline-flex">
+                            <div class="site-demo-button" id="layerDemo1" style="margin-bottom: 0;padding-left: 10px">
+                                <button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal layui-button-edit">编辑</button>
+                                <button data-method="onset" data-type="auto" class="layui-btn layui-btn-normal layui-button-delete">删除</button>
+                            </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+        <div class="new" style="display:none;">
+            <div class="layui-row layui-new-edit" style="padding: 10px 0" id="edit" >
+                <div class="layui-col-md11" id="Content">
+
+                    <form class="layui-form" lay-filter="formTestFilter2121" >
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">类型：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name=""  class="layui-input">
+                            </div>
+
+                            <label class="layui-form-label">分值：</label>
+                            <div class="layui-input-block">
+                                <input type="text" name=""  class="layui-input">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    <script type="text/javascript"src="layui/layui.js" charset="utf-8"></script>
+    <script src="jquery3.min.js"> </script>
+    <script>
+        layui.use('layer', function(){ //独立版的layer无需执行这一句
+            var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+            //触发事件
+            var active = {
+                offset: function(othis){
+                    var type = othis.data('type')
+                        ,text = othis.text();
+                    var contetn=$("#edit").html();
+
+                    layer.open({
+                        type: 1
+                        ,offset:  ['100px', '650px'] //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                        ,id: 'layerDemo1'+type //防止重复弹出
+                        ,content:   contetn
+//                        ,content:$("#popSearchRoleTest")
+                        ,btn: ['确定','取消']
+                        ,area:['300px','200px']
+                        ,btnAlign: 'r' //按钮居中
+                        ,shade: [0.5, '#393D49'] //不显示遮罩
+                        ,yes: function(){
+                            layer.closeAll();
+                        }
+                    });
+    //                layer.open({
+    //                    type: 1
+    //                    ,offset:  ['100px', '550px'] //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+    //                    ,id: 'layerDemo2'+type //防止重复弹出
+    //                    ,content: '<div style="padding: 20px 100px;">'+ '你确定删除？' +'</div>'
+    //                    ,btn: '确定'
+    //                    ,btnAlign: 'r' //按钮居中
+    //                    ,shade: 0 //不显示遮罩
+    //                    ,yes: function(){
+    //                        layer.closeAll();
+    //                    }
+    //                });
+                }
+                ,onset: function(othis){
+                    var type = othis.data('type')
+                        ,text = othis.text();
+
+
+                    layer.open({
+                        type: 1
+                        ,offset:  ['100px', '650px'] //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                        ,id: 'layerDemo1'+type //防止重复弹出
+                        ,content: '<div style="padding: 20px 100px;">'+ text +'</div>'
+//                        ,content:$("#popSearchRoleTest")
+                        ,btn: ['确定','取消']
+                        ,btnAlign: 'r' //按钮居中
+                        ,shade: [0.5, '#393D49'] //不显示遮罩
+                        ,yes: function(){
+                            layer.closeAll();
+                        }
+                    });
+                    //                layer.open({
+                    //                    type: 1
+                    //                    ,offset:  ['100px', '550px'] //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                    //                    ,id: 'layerDemo2'+type //防止重复弹出
+                    //                    ,content: '<div style="padding: 20px 100px;">'+ '你确定删除？' +'</div>'
+                    //                    ,btn: '确定'
+                    //                    ,btnAlign: 'r' //按钮居中
+                    //                    ,shade: 0 //不显示遮罩
+                    //                    ,yes: function(){
+                    //                        layer.closeAll();
+                    //                    }
+                    //                });
+                }
+            };
+
+            $('#layerDemo1 .layui-btn').on('click', function(){
+                var othis = $(this),
+                    method = othis.data('method');
+                active[method] ? active[method].call(this, othis) : '';
+            });
+
+        });
+
+
+    </script>
+    <script type="text/javascript">
+        var bigBox=document.getElementsByClassName("bigBox")[0];
+        var smallBox=document.getElementsByClassName("smallBox")[0];
+        var number=12;//你所需要的次数，12只是一个随意值
+        for(var i=0;i<number;i++){
+            var newBox=smallBox.cloneNode(true);
+            bigBox.appendChild(newBox)
+        }
+
+
+    </script>
+    </div>
+    </body>
+    </html>
