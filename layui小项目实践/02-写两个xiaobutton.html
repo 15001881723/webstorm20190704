@@ -1,0 +1,36 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>02-写两个xiaobutton</title>
+        <link rel="stylesheet" href="../CardPad/layui/css/layui.css">
+    </head>
+    <body>
+    <button class="layui-btn layui-sm btn">弹出一个dialog框</button>
+    <button class="layui-btn-normal layui-btn layui-sm btn2">弹出一个dialog框</button>
+    <script src="../cardPad/layui/layui.all.js"></script>
+    <script type="text/javascript">
+        layui.use('layer', function () {//调用layui组件
+            var layer=layui.layer;
+            $=layui.jquery;
+            $(".btn").on('click',function(){//为按钮添加一个事件
+                layer.open({
+                    title:'haha'//标题栏
+                    ,skin:'mylayuicss'
+                    ,content:'http://www.baidu.com'//内容
+                    ,btn:['yes','no']
+                    ,yes:function () {
+                        layer.msg("我是大魔王")
+                    }
+                })
+            });
+            $(".btn2").on('click',function(){
+                layer.msg("nihao aa",{icon:1})
+            });
+
+        });
+
+    </script>
+
+    </body>
+    </html>

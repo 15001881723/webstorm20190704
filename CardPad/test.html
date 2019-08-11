@@ -28,7 +28,7 @@
     <body>
     <div style="padding: 20px; background-color:#0171ff;">
         <div class="layui-row layui-col-space15 bigBox">
-            <div class="layui-col-md2 smallBox" >
+            <div class="layui-col-md3 smallBox " style="">
                 <div class="layui-card"  style="border-radius: .5rem;">
                     <div class="layui-card-header">卡片面板</div>
                     <div style="display:inline-flex;">
@@ -56,17 +56,17 @@
 
         <div class="new" style="display:none;">
             <div class="layui-row layui-new-edit" style="padding: 10px 0" id="edit" >
-                <div class="layui-col-md11" id="Content">
+                <div class="layui-col-md10" id="Content">
 
                     <form class="layui-form" lay-filter="formTestFilter2121" >
                         <div class="layui-form-item">
                             <label class="layui-form-label">类型：</label>
-                            <div class="layui-input-block">
+                            <div class="layui-input-block" style="margin-top: 10px;">
                                 <input type="text" name=""  class="layui-input">
                             </div>
 
                             <label class="layui-form-label">分值：</label>
-                            <div class="layui-input-block">
+                            <div class="layui-input-block" style="margin-top: 10px;">
                                 <input type="text" name=""  class="layui-input">
                             </div>
                         </div>
@@ -93,7 +93,7 @@
 
                     layer.open({
                         type: 1
-                        ,offset:  ['100px', '650px'] //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                        ,offset:  ['100px', '40%'] //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
                         ,id: 'layerDemo1'+type //防止重复弹出
                         ,content:   contetn
 //                        ,content:$("#popSearchRoleTest")
@@ -105,49 +105,26 @@
                             layer.closeAll();
                         }
                     });
-    //                layer.open({
-    //                    type: 1
-    //                    ,offset:  ['100px', '550px'] //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
-    //                    ,id: 'layerDemo2'+type //防止重复弹出
-    //                    ,content: '<div style="padding: 20px 100px;">'+ '你确定删除？' +'</div>'
-    //                    ,btn: '确定'
-    //                    ,btnAlign: 'r' //按钮居中
-    //                    ,shade: 0 //不显示遮罩
-    //                    ,yes: function(){
-    //                        layer.closeAll();
-    //                    }
-    //                });
+
                 }
                 ,onset: function(othis){
                     var type = othis.data('type')
                         ,text = othis.text();
-
-
                     layer.open({
                         type: 1
                         ,offset:  ['100px', '650px'] //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
                         ,id: 'layerDemo1'+type //防止重复弹出
-                        ,content: '<div style="padding: 20px 100px;">'+ text +'</div>'
+                        ,content: '<div style="padding: 20px 100px;">'+ '你确定要删除吗？' +'</div>'
 //                        ,content:$("#popSearchRoleTest")
                         ,btn: ['确定','取消']
-                        ,btnAlign: 'r' //按钮居中
-                        ,shade: [0.5, '#393D49'] //不显示遮罩
+                        ,btnAlign: 'r' //按钮居右
+                        ,area:['300px','200px']
+                        ,shade: [0.5, '#393D49'] //显示遮罩
                         ,yes: function(){
                             layer.closeAll();
                         }
                     });
-                    //                layer.open({
-                    //                    type: 1
-                    //                    ,offset:  ['100px', '550px'] //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
-                    //                    ,id: 'layerDemo2'+type //防止重复弹出
-                    //                    ,content: '<div style="padding: 20px 100px;">'+ '你确定删除？' +'</div>'
-                    //                    ,btn: '确定'
-                    //                    ,btnAlign: 'r' //按钮居中
-                    //                    ,shade: 0 //不显示遮罩
-                    //                    ,yes: function(){
-                    //                        layer.closeAll();
-                    //                    }
-                    //                });
+
                 }
             };
 

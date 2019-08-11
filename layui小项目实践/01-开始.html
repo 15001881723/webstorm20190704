@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>入坑layui</title>
+    <link rel="stylesheet" href="../CardPad/layui/css/layui.css">
+</head>
+<body>
+
+
+
+<!--<script src="../cardPad/layui/layui.js"></script>-->
+<script src="../cardPad/layui/layui.all.js"></script>
+
+<script>
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form'], function(){
+        var layer = layui.layer
+            ,form = layui.form;
+
+        layer.msg('Hello World12');
+    });
+
+    //非模块化方式（即所有模块一次性加载，尽管我们并不推荐你这么做）
+    // ;!function(){
+    //     var layer = layui.layer
+    //         ,form = layui.form;
+    //
+    //     layer.msg('Hello World');
+    // }();
+</script>
+</body>
+</html>
