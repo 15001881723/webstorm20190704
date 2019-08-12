@@ -1,0 +1,248 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title>layout 后台大布局 - Layui</title>
+        <link rel="stylesheet" href="../CardPad/layui/css/layui.css">
+        <style type="text/css">
+            .layui-button-edit{
+                padding: 0 6px;
+                height: 28px;
+                line-height: 28px;
+            }
+            .layui-button-delete{
+                padding: 0 6px;
+                height: 28px;
+                line-height: 28px;
+                background: #ff1e1e;
+            }
+
+        </style>
+    </head>
+    <body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo">layui 后台布局</div>
+            <!-- 头部区域（可配合layui已有的水平导航） -->
+            <ul class="layui-nav layui-layout-left">
+                <li class="layui-nav-item"><a href="">控制台</a></li>
+                <li class="layui-nav-item"><a href="">商品管理</a></li>
+                <li class="layui-nav-item"><a href="">用户</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">其它系统</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">邮件管理</a></dd>
+                        <dd><a href="">消息管理</a></dd>
+                        <dd><a href="">授权管理</a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                        贤心
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="">基本资料</a></dd>
+                        <dd><a href="">安全设置</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">退了</a></li>
+            </ul>
+        </div>
+
+        <div class="layui-side layui-bg-black">
+            <div class="layui-side-scroll">
+                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+                <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                    <li class="layui-nav-item layui-nav-itemed">
+                        <a class="" href="javascript:;">所有商品</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">列表一</a></dd>
+                            <dd><a href="javascript:;">列表二</a></dd>
+                            <dd><a href="javascript:;">列表三</a></dd>
+                            <dd><a href="">超链接</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">解决方案</a>
+                        <dl class="layui-nav-child">
+                            <dd><a href="javascript:;">列表一</a></dd>
+                            <dd><a href="javascript:;">列表二</a></dd>
+                            <dd><a href="">超链接</a></dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item"><a href="">云市场</a></li>
+                    <li class="layui-nav-item"><a href="">发布商品</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="layui-body">
+            <!-- 内容主体区域 -->
+            <div style="padding: 20px; background-color:#0171ff;">
+                <div class="layui-row layui-col-space15 bigBox">
+                    <div class="layui-col-md3 smallBox " style="">
+                        <div class="layui-card"  style="border-radius: .5rem;">
+                            <div class="layui-card-header">卡片面板</div>
+                            <div style="display:inline-flex;">
+                                <div class="layui-card-body">
+                                    结合 layui 的栅格系统<br>
+                                    轻松实现响应式布局
+                                </div>
+
+                                <div style="padding-left: 5px;padding-top: 30px;display: inline-flex">
+                                    <div class="site-demo-button layui-btn-container layui-col-space10 " id="layerDemo1" style="margin-bottom: 0;margin-left: 80px">
+                                        <button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal layui-button-edit" >编辑</button>
+                                        <button data-method="onset" data-type="auto" class="layui-btn layui-btn-normal layui-button-delete" >删除</button>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div class="new" style="display:none;">
+                    <div class="layui-row layui-new-edit" style="padding: 10px 0;" id="edit" >
+                        <div class="layui-col-md10" id="Content">
+
+                            <form class="layui-form" >
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">名称：</label>
+                                    <div class="layui-input-block" style="margin-top: 10px;">
+                                        <input type="text" name="" required  class="layui-input">
+                                    </div>
+                                    <label class="layui-form-label">分值：</label>
+                                    <div class="layui-input-block" style="margin-top: 10px;">
+                                        <input type="text" name="" required  class="layui-input">
+                                    </div>
+                                </div>
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">类型：</label>
+                                    <div class="layui-input-block">
+                                        <select name="city" lay-verify="required">
+                                            <option value=""></option>
+                                            <option value="0">A</option>
+                                            <option value="1">B</option>
+                                            <option value="2">C</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div class="layui-footer">
+            <!-- 底部固定区域 -->
+            © layui.com - 底部固定区域
+        </div>
+    </div>
+
+    <script src="../cardPad/layui/layui.all.js"></script>
+    <script type="text/javascript"src="../cardPad/layui/layui.js" charset="utf-8"></script>
+    <script src="../cardPad/jquery3.min.js"> </script>
+    <script>
+        layui.use(['layer', 'form'], function(){ //独立版的layer无需执行这一句
+            var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+            //触发事件
+            var active = {
+                offset: function(othis){
+                    var type = othis.data('type')
+                        ,text = othis.text();
+                    var contetn=$("#edit").html();
+
+                    layer.open({
+                        type: 1
+                        ,offset:  ['100px', '40%'] //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                        ,id: 'layerDemo1'+type //防止重复弹出
+                        ,content:   contetn
+//                        ,content:$("#popSearchRoleTest")
+                        ,btn: ['确定','取消']
+                        ,area:['500px','400px']
+                        ,resize: false
+                        ,btnAlign: 'r' //按钮居中
+                        ,shade: [0.5, '#393D49'] //不显示遮罩
+                        ,yes: function(){
+                            layer.closeAll();
+                        }
+                    });
+
+                }
+                ,onset: function(othis){
+                    var type = othis.data('type')
+                        ,text = othis.text();
+                    layer.open({
+                        type: 1
+                        ,offset:  ['100px', '650px'] //具体配置参考：http://www.layui.com/doc/modules/layer.html#offset
+                        ,id: 'layerDemo1'+type //防止重复弹出
+                        ,content: '<div style="padding: 20px 100px;">'+ '你确定要删除吗？' +'</div>'
+//                        ,content:$("#popSearchRoleTest")
+                        ,btn: ['确定','取消']
+                        ,btnAlign: 'r' //按钮居右
+                        ,area:['300px','200px']
+                        ,shade: [0.5, '#393D49'] //显示遮罩
+                        ,yes: function(){
+                            layer.closeAll();
+                        }
+                    });
+
+                }
+            };
+
+            $('#layerDemo1 .layui-btn').on('click', function(){
+                var othis = $(this),
+                    method = othis.data('method');
+                active[method] ? active[method].call(this, othis) : '';
+                var form = layui.form;
+                form.render();
+            });
+
+        });
+
+
+    </script>
+    <script type="text/javascript">
+        var bigBox=document.getElementsByClassName("bigBox")[0];
+        var smallBox=document.getElementsByClassName("smallBox")[0];
+        var number=12;//你所需要的次数，12只是一个随意值
+        for(var i=0;i<number;i++){
+            var newBox=smallBox.cloneNode(true);
+            bigBox.appendChild(newBox)
+        }
+    </script>
+
+    <script>
+        //JavaScript代码区域
+        layui.use('element', function(){
+            var element = layui.element;
+
+        });
+    </script>
+    <script>
+        layui.use('form', function(){
+            var form = layui.form;
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+                layer.msg(JSON.stringify(data.field));
+                return false;
+            });
+        })
+    </script>
+    </body>
+    </html>

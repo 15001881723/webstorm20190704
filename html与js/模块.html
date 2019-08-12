@@ -1,13 +1,9 @@
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <title>112233</title>
-        <meta name="renderer" content="webkit">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link rel="stylesheet" href="layui/css/layui.css"  media="all">
-        <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+        <meta charset="UTF-8">
+        <title>模块</title>
+        <link rel="stylesheet" href="../CardPad/layui/css/layui.css">
         <style type="text/css">
             .layui-button-edit{
                 padding: 0 6px;
@@ -20,9 +16,6 @@
                 line-height: 28px;
                 background: #ff1e1e;
             }
-        /*.new .layui-button-edit{*/
-                /*padding: 10px 0;*/
-        /*}*/
         </style>
     </head>
     <body>
@@ -38,36 +31,46 @@
                         </div>
 
                         <div style="padding-left: 5px;padding-top: 30px;display: inline-flex">
-                            <div class="site-demo-button layui-btn-container layui-col-space10 " id="layerDemo1" style="margin-bottom: 0;margin-left: 150px">
+                            <div class="site-demo-button layui-btn-container layui-col-space10 " id="layerDemo1" style="margin-bottom: 0;margin-left: 80px">
                                 <button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal layui-button-edit" >编辑</button>
                                 <button data-method="onset" data-type="auto" class="layui-btn layui-btn-normal layui-button-delete" >删除</button>
                             </div>
 
+                        </div>
+
+
                     </div>
-
-
                 </div>
-            </div>
 
+
+            </div>
 
         </div>
 
-    </div>
-
         <div class="new" style="display:none;">
-            <div class="layui-row layui-new-edit" style="padding: 10px 0" id="edit" >
+            <div class="layui-row layui-new-edit" style="padding: 10px 0;" id="edit" >
                 <div class="layui-col-md10" id="Content">
 
-                    <form class="layui-form" lay-filter="formTestFilter2121" >
+                    <form class="layui-form" >
                         <div class="layui-form-item">
-                            <label class="layui-form-label">类型：</label>
+                            <label class="layui-form-label">名称：</label>
                             <div class="layui-input-block" style="margin-top: 10px;">
-                                <input type="text" name=""  class="layui-input">
+                                <input type="text" name="" required  class="layui-input">
                             </div>
-
                             <label class="layui-form-label">分值：</label>
                             <div class="layui-input-block" style="margin-top: 10px;">
-                                <input type="text" name=""  class="layui-input">
+                                <input type="text" name="" required  class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">类型：</label>
+                            <div class="layui-input-block">
+                                <select name="city" lay-verify="required">
+                                    <option value=""></option>
+                                    <option value="0">A</option>
+                                    <option value="1">B</option>
+                                    <option value="2">C</option>
+                                </select>
                             </div>
                         </div>
                     </form>
@@ -76,12 +79,11 @@
             </div>
         </div>
     </div>
-
-
+    <script src="layui/layui.all.js"></script>
     <script type="text/javascript"src="layui/layui.js" charset="utf-8"></script>
     <script src="jquery3.min.js"> </script>
     <script>
-        layui.use('layer', function(){ //独立版的layer无需执行这一句
+        layui.use(['layer', 'form'], function(){ //独立版的layer无需执行这一句
             var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
 
             //触发事件
@@ -98,7 +100,8 @@
                         ,content:   contetn
 //                        ,content:$("#popSearchRoleTest")
                         ,btn: ['确定','取消']
-                        ,area:['300px','200px']
+                        ,area:['500px','400px']
+                        ,resize: false
                         ,btnAlign: 'r' //按钮居中
                         ,shade: [0.5, '#393D49'] //不显示遮罩
                         ,yes: function(){
@@ -132,6 +135,8 @@
                 var othis = $(this),
                     method = othis.data('method');
                 active[method] ? active[method].call(this, othis) : '';
+                var form = layui.form;
+                form.render();
             });
 
         });
@@ -146,9 +151,24 @@
             var newBox=smallBox.cloneNode(true);
             bigBox.appendChild(newBox)
         }
-
-
     </script>
 
+    <script>
+        //JavaScript代码区域
+        layui.use('element', function(){
+            var element = layui.element;
+
+        });
+    </script>
+    <script>
+        layui.use('form', function(){
+            var form = layui.form;
+            //监听提交
+            form.on('submit(formDemo)', function(data){
+                layer.msg(JSON.stringify(data.field));
+                return false;
+            });
+        })
+    </script>
     </body>
     </html>

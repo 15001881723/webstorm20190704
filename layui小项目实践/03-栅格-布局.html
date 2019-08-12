@@ -17,10 +17,16 @@
             .d{
                 background: #1e27ff;
             }
+            .e{
+                background: #19ca1c;
+            }
+            .f{
+                background: #ff2f4a;
+            }
         </style>
     </head>
     <body>
-    <div class="layui-container  ">
+    <div class="layui-container a ">
         常规布局（以中型屏幕桌面为例）：
         <div class="layui-row b">
             <div class="layui-col-md9 c">
@@ -28,6 +34,20 @@
             </div>
             <div class="layui-col-md3 d">
                 你的内容 3/12
+            </div>
+        </div>
+        <div class="layui-btn-container layui-col-space10 layui-row ">
+            <button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal layui-button-edit " >编辑</button>
+            <button data-method="onset" data-type="auto" class="layui-btn layui-btn-normal layui-button-delete layui-col-md-offset4 " >删除</button>
+
+        </div>
+        <a href="http://www.baidu.com" class="layui-btn">一个可跳转的按钮</a>
+        <div class="layui-row">
+            <div class="layui-col-md4 e">
+                4/12
+            </div>
+            <div class="layui-col-md4 layui-col-md-offset4 f">
+                偏移4列，从而在最右
             </div>
         </div>
     </div>
