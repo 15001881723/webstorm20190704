@@ -135,6 +135,8 @@
                 var othis = $(this),
                     method = othis.data('method');
                 active[method] ? active[method].call(this, othis) : '';
+
+                //需要对这个表单元素进行重新渲染
                 var form = layui.form;
                 form.render();
             });

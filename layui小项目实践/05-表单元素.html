@@ -1,0 +1,76 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>表单</title>
+        <link rel="stylesheet" href="../CardPad/layui/css/layui.css">
+    </head>
+    <body>
+    <form class="layui-form" action="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">输入框</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <input type="text" lay-verify="email">
+        <input type="checkbox" checked lay-skin="switch" lay-filter="encrypt" title="是否加密">
+        <button lay-submit>提交</button>
+
+    </form>
+
+
+
+
+
+    <script src="../cardPad/layui/layui.all.js"></script>
+    <script type="text/javascript"src="../cardPad/layui/layui.js" charset="utf-8"></script>
+    <script src="../cardPad/jquery3.min.js"> </script>
+    <script type="text/javascript">
+        //eg1
+        layui.use('layer', function(){
+            var layer = layui.layer;
+
+//            layer.msg('hello');
+
+        layer.confirm('纳尼？', {
+            btn: ['按钮一', '按钮二', '按钮三'] //可以无限个按钮
+            ,btn3: function(index, layero){
+                //按钮【按钮三】的回调
+            }
+        }, function(index, layero){
+            //按钮【按钮一】的回调
+        }, function(index){
+            //按钮【按钮二】的回调
+        });
+
+        //eg2
+//        layer.open({
+//            content: 'test'
+//            ,btn: ['按钮一', '按钮二', '按钮三']
+//            ,yes: function(index, layero){
+//                //按钮【按钮一】的回调
+//                alert(12);
+//            }
+//            ,btn2: function(index, layero){
+//                //按钮【按钮二】的回调
+//                alert(123);
+//                return false; //开启该代码可禁止点击该按钮关闭
+//            }
+//            ,btn3: function(index, layero){
+//                //按钮【按钮三】的回调
+//                alert(1234);
+//                return false;
+//                //return false 开启该代码可禁止点击该按钮关闭
+//            }
+//            ,cancel: function(){
+//                //右上角关闭回调
+//                alert(1235);
+//
+//              // return false  //开启该代码可禁止点击该按钮关闭
+//            }
+//           });
+        });
+    </script>
+    </body>
+    </html>
