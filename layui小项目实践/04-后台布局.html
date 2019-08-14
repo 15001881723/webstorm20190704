@@ -152,7 +152,12 @@
             © layui.com - 底部固定区域
         </div>
     </div>
-
+    <div class="layui-form-item">
+        <label class="layui-form-label">标签区域</label>
+        <div class="layui-input-block">
+            原始表单元素区域
+        </div>
+    </div>
     <script src="../cardPad/layui/layui.all.js"></script>
     <script type="text/javascript"src="../cardPad/layui/layui.js" charset="utf-8"></script>
     <script src="../cardPad/jquery3.min.js"> </script>
@@ -238,10 +243,10 @@
         layui.use('form', function(){
             var form = layui.form;
             //监听提交
-            form.on('submit(formDemo)', function(data){
-                layer.msg(JSON.stringify(data.field));
-                return false;
-            });
+//            form.on('submit(formDemo)', function(data){
+//                layer.msg(JSON.stringify(data.field));
+//                return false;
+//            });
         })
     </script>
     </body>
