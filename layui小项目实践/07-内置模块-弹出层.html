@@ -1,0 +1,76 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>07-内置模块-弹出层</title>
+        <link rel="stylesheet" href="../CardPad/layui/css/layui.css">
+    </head>
+
+    <body>
+    <script src="../cardPad/layui/layui.all.js"></script>
+    <script type="text/javascript"src="../cardPad/layui/layui.js" charset="utf-8"></script>
+    <script src="../cardPad/jquery3.min.js"> </script>
+    <script src="layer/layer.js"></script>
+    <script type="text/javascript">
+        layer.open({
+            content: '测试回调'
+            ,closeBtn: 2//有三种方式0、1，2分别为不显示，常规式与特别式
+            ,shade: [0.8, '#393D49']
+//            ,time: 5000
+            ,anim: 4
+            ,resize:true
+            ,move: false
+            ,tips: [1, '#c00']
+            ,btn: ['按钮一', '按钮二', '按钮三']
+            ,success: function(layero, index){
+                console.log(layero, index);
+            }
+            ,yes: function(index, layero){
+                //按钮【按钮一】的回调
+                layer.close(index); //如果设定了yes回调，需进行手工关闭
+            }
+            ,btn2: function(index, layero){
+                //按钮【按钮二】的回调
+
+                //return false 开启该代码可禁止点击该按钮关闭
+            }
+            ,btn3: function(index, layero){
+                //按钮【按钮三】的回调
+
+                //return false 开启该代码可禁止点击该按钮关闭
+            }
+           , cancel: function(index, layero){
+                if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
+                    layer.close(index)
+                }
+                return false;
+            }
+//            ,cancel: function(){
+//                //右上角关闭回调
+//
+//                //return false 开启该代码可禁止点击该按钮关闭
+//            }
+        });
+//        layer.open({
+//            content: '测试回调',
+//            success: function(layero, index){
+//                console.log(layero, index);
+//            }
+//        });
+        layer.ready(function(){
+//            layer.msg('很高兴一开场就见到你');
+//            layer.alert('只想简单的提示');
+//            layer.alert('加了个图标', {icon: 1}); //这时如果你也还想执行yes回调，可以放在第三个参数中。
+            layer.alert('有了回调', function(index){
+                //do something
+                layer.alert('只想简单的提示45454');
+                layer.close(index);
+            });
+        });
+        var index = layer.load(2, {time: 10*1000}); //又换了种风格，并且设定最长等待10秒
+        //关闭
+        layer.close(index);
+    </script>
+
+    </body>
+    </html>

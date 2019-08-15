@@ -173,7 +173,33 @@
             <div class="layui-tab-item">内容5</div>
         </div>
     </div>
-
+    <table class="layui-table" lay-even lay-skin="row " >
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>昵称</th>
+            <th>加入时间</th>
+            <th>签名</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>贤心</td>
+            <td>2016-11-29</td>
+            <td>人生就像是一场修行</td>
+        </tr>
+        <tr>
+            <td>许闲心</td>
+            <td>2016-11-28</td>
+            <td><button class="layui-btn">查看消息<span class="layui-badge layui-bg-gray">1</span></button>
+                <button class="layui-btn">动态<span class="layui-badge-dot layui-bg-orange"></span></button></td>
+        </tr>
+        </tbody>
+    </table>
 
 
     <script src="../cardPad/layui/layui.all.js"></script>
@@ -190,7 +216,10 @@
 
     </script>
 
-
+    <script src="layer.js"></script>
+    <script>
+        layer.msg('hello123');
+    </script>
 
     </body>
     </html>
