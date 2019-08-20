@@ -1,0 +1,82 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>btn-form-table</title>
+        <link rel="stylesheet" href="layui/css/layui.css">
+    </head>
+    <body>
+
+
+    <!--//开始界面-->
+    <div class="layui-btn-container">
+        <button type="button" class="layui-btn" id="btn">按钮一</button>
+    </div>
+    <div id="mydiv">
+        <table id="mytable"  lay-filter="test" >
+            <thead>
+            <tr>
+                <th>用户</th>
+                <th>密码</th>
+            </tr>
+            </thead>
+
+        </table>
+    </div>
+
+
+    <form class="layui-form"  id="formTbale" style="display: none">
+        <div class="layui-form-item" style="margin-top:200px;margin-left:170px;">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+
+
+
+    <script src="layui/layui.all.js"></script>
+    <script src="jquery3.min.js"> </script>
+    <script src="layer/layer.js"></script>
+
+   <script>
+
+       layui.use(['layer','form','table'], function(){
+           var layer = layui.layer,form=layui.form,table=layui.table;
+              //点击按钮，打开form
+           $('#btn').on('click',function () {
+              layer.open({
+                   type: 1
+                   ,content: $("#formTbale")
+                   ,area: ['500px', '300px']
+                   ,resize:false
+                   ,move: false
+               });
+           });
+           //先将那个静态删掉，再将内容传到监听的内容里面，进行渲染
+           var $mytable= $('#mydiv').html();
+           $("#mydiv").remove();
+           form.on('submit(*)', function(data){
+               layer.open({
+                   type: 1
+                   , content: $mytable
+                   ,area: ['500px', '300px']
+                   ,resize:false
+                   ,move: false
+               });
+             //转换静态表格
+               table.init('test',{
+                   elem: '#mytable'
+                   ,limit: 10 //注意：请务必确保 limit 参数（默认：10）是与你服务端限定的数据条数一致
+                   //支持所有基础参数
+               });
+             return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+
+           });
+
+
+       });
+   </script>
+    </body>
+    </html>
