@@ -123,3 +123,8 @@ th, td {
   text-align: center;
 }
 
+.bigChange{
+  color: #00F7DE;
+  font-size: 20px;
+  font-weight: 600;
+}

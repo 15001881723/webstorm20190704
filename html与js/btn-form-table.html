@@ -8,11 +8,11 @@
     <body>
 
 
-    <!--//开始界面-->
+    <!--//静态表格-->
     <div class="layui-btn-container">
         <button type="button" class="layui-btn" id="btn">按钮一</button>
     </div>
-    <div id="mydiv">
+    <div id="mydiv" style="display: none;">
         <table id="mytable"  lay-filter="test" >
             <thead>
             <tr>
@@ -20,12 +20,11 @@
                 <th>密码</th>
             </tr>
             </thead>
-
         </table>
     </div>
 
-
-    <form class="layui-form"  id="formTbale" style="display: none">
+<!--//第一个弹出框，form表单-->
+    <form class="layui-form"  id="formTbale" style="display: none;">
         <div class="layui-form-item" style="margin-top:200px;margin-left:170px;">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
@@ -41,7 +40,7 @@
     <script src="layer/layer.js"></script>
 
    <script>
-
+//          layer操作
        layui.use(['layer','form','table'], function(){
            var layer = layui.layer,form=layui.form,table=layui.table;
               //点击按钮，打开form
@@ -52,18 +51,24 @@
                    ,area: ['500px', '300px']
                    ,resize:false
                    ,move: false
+                  ,cancel: function(){
+                      $('#formTbale').hide();
+                  }
                });
            });
            //先将那个静态删掉，再将内容传到监听的内容里面，进行渲染
-           var $mytable= $('#mydiv').html();
-           $("#mydiv").remove();
+//           var $mytable= $('#mydiv').html();
+//           $("#mydiv").remove();
            form.on('submit(*)', function(data){
                layer.open({
                    type: 1
-                   , content: $mytable
+                   , content: $('#mydiv')
                    ,area: ['500px', '300px']
                    ,resize:false
                    ,move: false
+                   ,cancel: function(){
+                       $('#mydiv').hide();
+                   }
                });
              //转换静态表格
                table.init('test',{
