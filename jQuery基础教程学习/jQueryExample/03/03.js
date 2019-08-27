@@ -146,18 +146,33 @@
 
     //上述代码有一个bug，就是当switch-default点击次数为偶数次的时候，那么将会失效，所以需要一种解决方案，用户在单击任何按钮时解除绑定，在确定单击按钮
     //是在switch-default 这个id下的重新绑定
+    // $(document).ready(function () {
+    //     //    var switcherToggle=function (event) {
+    //     //        if(!$(event.target).is('button')){   //条件判断属性是不是button
+    //     //            $('#switcher button').toggleClass('hidden');
+    //     //        }
+    //     //    }
+    //     //     $('#switcher').on('click.collapse',switcherToggle);
+    //     //     $('#switcher button').click(function () {
+    //     //         $('#switcher').off('click.collapse');
+    //     //         if(this.id==='switcher-default'){
+    //     //        $('#switcher').on('click.collapse',switcherToggle);
+    //     //     }
+    //     //
+    //     // })
+    //     // })
+    //第一题 在Charls Dickens被单击时，添加selected样式
     $(document).ready(function () {
-       var switcherToggle=function (event) {
-           if(!$(event.target).is('button')){   //条件判断属性是不是button
-               $('#switcher button').toggleClass('hidden');
-           }
-       }
-        $('#switcher').on('click.collapse',switcherToggle);
-        $('#switcher button').click(function () {
-            $('#switcher').off('click.collapse');
-            if(this.id==='switcher-default'){
-           $('#switcher').on('click.collapse',switcherToggle);
-        }
+        $('.author').click(function () {
+           $(this).addClass('selected')
+            console.log($('#header div'))
+        })
+    })
+//第二题 双击标题（<h3 class="chapter-title">）时，切换文本的可见性
+    $(document).ready(function () {
+        $('.chapter-title').on('dblclick',function () {
+            $(this).nextAll().toggleClass('hidden')
 
+        })
     })
-    })
+    //第三题
