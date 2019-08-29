@@ -25,13 +25,17 @@
         var $speech=$('div.speech')
         $h2.on('click',function () {
             $h2.css({
+               position:'relative'
+            }).animate({
                 opacity:0.25
-                ,position:'relative'
                 ,left:'+=20px'
-            })
+            },5000).queue(function () {
                 $speech.css({
                     opacity:0.5
                 })
+            })
+
+
 
 
         })
