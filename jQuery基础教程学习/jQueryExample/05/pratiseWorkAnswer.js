@@ -2,69 +2,75 @@
      * Created by Administrator on 2019/8/29.
      */
 
-   //第一题  一开始隐藏 然后要缓慢淡入
-   //  $(function () {
-   //
-   //      $('#container').hide(function () {
-   //          $('#container').fadeTo(5000,1.0)
-   //      })
-   //  })
-    //第er题 鼠标悬停到某个段落时候 该段落增加黄色背景颜色
-    // $(function () {
-    //
-    //  $('div.speech p').mouseover(function () {
-    //      $(this).css({backgroundColor:'yellow'})
-    //  }).mouseout(function () {
-    //      $(this).css({backgroundColor:''})
-    //  })
-    //
-    // })
-    //第三题 两部分的东西 第一部分：同时将h2左外边距与透明度变成25% 第二部分：紧接第一部分之后，将讲话文稿变成50%透明度
+   //第一题  在第四个p之后插入back to top 采用each 与 insertAfter函数
     $(function () {
-        var $h2=$('div h2');
-        var $speech=$('div.speech')
-        $h2.on('click',function () {
-            $h2.css({
-               position:'relative'
-            }).animate({
-                opacity:0.25
-                ,left:'+=20px'
-            },5000).queue(function () {
-                $speech.css({
-                    opacity:0.5
-                })
-            })
-        })
+     $('div.chapter p').each(function (index) {
+
+         if (index>2){
+      $('<a type="button" href="#top"> back to top</a>')
+       .insertAfter( $('.chapter p').eq(index))
+       $('<a id="top"></a>');
+         }
+     })
+
     })
-    //第四题 方向键按下 switcher这个大框按照方向移动20px
+    //第二题 单击back to top 时候为每个链接 添加一个新的段落 包含you were here字样
+    // 但是确保链接任然有效
     $(function () {
-        $('#switcher').css({position: 'relative'})
-        $(document).keyup(function (event) {
-            var value=event.keyCode;
-            if(value===37){
-               $('#switcher').animate({left: '-=20px'});
-            }else if(value===38){
-                $('#switcher').animate({top: '-=20px'});
-            }else if(value===39){
-                $('#switcher').animate({left: '+=20px'});
-            }else if(value===40){
-                $('#switcher').animate({top: '+=20px'});
+     $('.chapter a').click(function () {
+         console.log($('.chapter a'))
+         $('<p>You were here</p>')
+             .insertAfter($('.chapter a:contains(\'back to top\')'));
+         $('<a id="top"></a>');
+     })
+    })
+
+
+
+
+    //第三题 单击作者的名字的时候 把文本改为粗体 通过添加标签的方式 不是操作类或者css 属性
+    // $(function () {
+    //     $('div#f-author').click(function () {
+    //         $('div#f-author').wrap('<b></b>')
+    //     })
+    // })
+
+    //第四题 单击作者的名字的时候 把文本改为粗体 通过添加标签的方式 不是操作类或者css 属性
+    //在黑体加粗与正常字体之间进行切换
+    $(function () {
+        $('div#f-author').click(function () {
+            var content=$(this).html();
+            if (content=='by Edwin A. Abbott'){
+                $(this).html('<b>by Edwin A. Abbott</b>')
+            } else{
+                $(this).html('by Edwin A. Abbott')
             }
         })
+    })
+    //第五题 为每一个段落添加一个inhabitants类 不能使用addClass方法
 
-        // switch(event.keyCode) {
-        //     case 37:
-        //         $('#switcher').animate({left: '-=20px'},'slow');
-        //         break;
-        //     case 38:
-        //         $('#switcher').animate({top: '-=20px'},'slow');
-        //         break;
-        //     case 39:
-        //         $('#switcher').animate({left: '+=20px'},'slow');
-        //         break;
-        //     case 40:
-        //         $('#switcher').animate({top: '+=20px'},'slow');
-        //         break;
+    // $(function () {
+    //     $('div.chapter p').each(function () {
+    //      var $class=$(this).attr('class')
+    //       if($class==null){
+    //           $(this).attr('class','inhabitants');
+    //       }else{
+    //           $(this).attr('class',$class+'inhabitants');
+    //       }
+    //     })
+    //
+    // })
+
+    //第五题第二种方法
+    // $(document).ready(function () {
+    //     $('div.chapter p').attr({
+    //         class:'+= inhabitants'
+    //     });
+    //  })
 
 
+    $(document).ready(function(){
+        $('div.chapter p').attr({
+            class:'+= inhabitants'
+        });
     })
