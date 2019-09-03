@@ -131,3 +131,4 @@ function build_entry($term, $entry) {
 
   return $html;
 }
+?>

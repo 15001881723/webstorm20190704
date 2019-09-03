@@ -5,7 +5,7 @@
     //
     // See README.txt for more information.
     
-//例6-2 将html片段a.html添加到主页面中
+// //例6-2 将html片段a.html添加到主页面中
     $(function () {
         $('#letter-a a').click(function (event) {
             event.preventDefault();
@@ -13,8 +13,8 @@
             alert('loaded!!');
         })
     })
-
-    //例6-6 通过$.getJSON获取b.json，然后当这个json加载完成以后 利用回调函数
+//
+//     //例6-6 通过$.getJSON获取b.json，然后当这个json加载完成以后 利用回调函数
     $(function () {
         $('#letter-b a').click(function (event) {
             event.preventDefault();
@@ -43,8 +43,8 @@
             })
         })
     })
-
-    //例6-7 通过$.getScript获取c.js，然后当这个js加载完成以后 可以自动执行
+//
+//     //例6-7 通过$.getScript获取c.js，然后当这个js加载完成以后 可以自动执行
     $(function () {
         $('#letter-c a').click(function (event) {
             event.preventDefault();
@@ -52,8 +52,8 @@
         })
 
     })
-    //例6-9 通过$.getScript获取d.xml文件，然后加载完成以后 跟加载html片段那时候一样
-
+//     //例6-9 通过$.getScript获取d.xml文件，然后加载完成以后 跟加载html片段那时候一样
+//
     $(function () {
         $('#letter-d a').click(function (event) {
             event.preventDefault();
@@ -81,9 +81,9 @@
                        $quote.find('line').each(function () {
                            html+='<div class="quote-line">'+$(this).text()+'</div>';
                        })
-                        // $.each( entry.quote,function (lineIndex,line) {
-                        //     html+='<div class="quote-line">'+line+'</div>';
-                        // });
+                        $.each( entry.quote,function (lineIndex,line) {
+                            html+='<div class="quote-line">'+line+'</div>';
+                        });
 
 
 
@@ -98,5 +98,18 @@
                 });
 
             })
+        })
+    })
+    //6-10模拟向服务器请求 get 模拟服务器接口
+    // 接口：在a链接绑定的事件上 这个 var requestData={ term: $(this).text()};
+    //在li标签上取得term
+    $(function () {
+        $('#letter-e a').click(function (event) {
+            event.preventDefault();
+            var requestData={term: $(this).text()}
+            $.get('e.php',requestData,function (data) {
+                $('#dictionary').html(data);
+            })
+            // $('#dictionary').load('e.php',requestData);
         })
     })
