@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="926947c8-dcae-483e-a740-8df229c2ce8a" name="wamp" url="http://localhost:80">
-        <fileTransfer port="0" mountedRoot="E:\www\jQuery1\jQueryExample\06" accessType="MOUNT" />
+        <fileTransfer port="0" mountedRoot="D:\webstorm20190704\jQuery1\jQueryExample\06" accessType="MOUNT" />
       </webServer>
     </option>
   </component>
