@@ -47,13 +47,21 @@
             event.preventDefault();
             $('#books').cycle('pause');
             $.cookie('cyclePaused','y')
-        }).appendTo(control);
+        }).appendTo(control).button({
+            icons:{
+                primary:'ui-icon-pause'
+            }
+        });
         $('<button>resume</button>').click(function (event) {
             event.preventDefault();
 
             $('#books').cycle('resume');
             $.cookie('cyclePaused',null)
-        }).appendTo(control)
+        }).appendTo(control).button({
+            icons:{
+                primary:'ui-icon-play'
+            }
+        });
 
         $books.hover(function () {
             $books.find('.title').animate({
@@ -80,6 +88,8 @@
             }
 
         }).appendTo(control)
+
+        $('button').button();
     })
 //7-9基于类的动画 toggleclass
 
@@ -91,4 +101,15 @@
             });
         })
     })
-    //7-11高级缓动函数
+    //部件
+    $(function () {
+        alert('111')
+        // event.preventDefault();
+        var $control=$('<div id="books_control"></div>');
+        $('<div id="slider"></div>').slider({
+            min:0,
+            max:$('#books li').length-1
+        }).appendTo($control);
+    })
+
+
