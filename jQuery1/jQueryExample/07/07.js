@@ -14,7 +14,7 @@
    //  })
     //7-3带参数的键值对 cycle是插件 修改默认值
     $.fn.cycle.defaults.timeout=10000;
-    $.fn.cycle.defaults.random=true;
+    $.fn.cycle.defaults.random=false;
     $(function () {
         $('#books').cycle({
             timeout:2000,
@@ -52,17 +52,20 @@
                 primary:'ui-icon-pause'
             }
         });
-        $('<button>resume</button>').click(function (event) {
-            event.preventDefault();
+        // $('<button>resume</button>').click(function (event) {
+        //     event.preventDefault();
+        //
+        //     $('#books').cycle('resume');
+        //     $.cookie('cyclePaused',null)
+        // }).appendTo(control).button({
+        //     icons:{
+        //         primary:'ui-icon-play'
+        //     }
+        // });
 
-            $('#books').cycle('resume');
-            $.cookie('cyclePaused',null)
-        }).appendTo(control).button({
-            icons:{
-                primary:'ui-icon-play'
-            }
-        });
 
+
+//在鼠标放在title的class属性的元素上 实现背景颜色的跟字体的切换
         $books.hover(function () {
             $books.find('.title').animate({
                 backgroundColor:'#eee',
@@ -75,10 +78,12 @@
             },1000);
         });
 
-        //7-11高级缓动函数
+
+
+        //7-11高级缓动函数 点击button事件
         $('<button>resume</button>').click(function (event) {
             event.preventDefault();
-             var $paused=$('ul:paused')
+             var $paused=$('ul:paused');
             if ($paused.length){
                  $paused.cycle('resume')
             }else{
@@ -87,9 +92,41 @@
             })
             }
 
-        }).appendTo(control)
+        }).appendTo(control).button({
+            icons:{
+                        primary:'ui-icon-play'
+                    }
+        })
 
-        $('button').button();
+        $('button').button();//修饰button的函数
+
+        $('<div id="slider"></div>').slider({
+            min:0,
+            max:$('#books li').length-1,
+           slide:function (event,ui) {
+               $books.cycle(ui.value)
+           }
+        }).appendTo(control);
+
+        // $('#books').cycle({
+        //         timeout:2000,
+        //         speed:200,
+        //         before: function () {
+        //             $('#slider').slide('value',$('#books li').index(this))
+        // }})
+
+
+
+    })
+
+
+    $(function () {
+        $('#books').cycle({
+            timeout:2000,
+            speed:200,
+            before: function () {
+                $('#slider').slider('value',$('#books li').index(this))
+            }})
     })
 //7-9基于类的动画 toggleclass
 
@@ -102,14 +139,8 @@
         })
     })
     //部件
-    $(function () {
-        alert('111')
-        // event.preventDefault();
-        var $control=$('<div id="books_control"></div>');
-        $('<div id="slider"></div>').slider({
-            min:0,
-            max:$('#books li').length-1
-        }).appendTo($control);
-    })
+    //幻灯片变化时候进行slide变换
+
+
 
 

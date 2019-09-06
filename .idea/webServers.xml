@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="98086d6f-1128-4eb6-ad29-bdc9029a2584" name="WAMMP" url="http://localhost:80">
-        <fileTransfer port="0" mountedRoot="D:\wamp\www" accessType="MOUNT" />
+        <fileTransfer port="0" mountedRoot="E:\wamp\www" accessType="MOUNT" />
       </webServer>
     </option>
   </component>
