@@ -103,9 +103,11 @@
         $('<div id="slider"></div>').slider({
             min:0,
             max:$('#books li').length-1,
-           slide:function (event,ui) {
+            slide:function (event,ui) {
                $books.cycle(ui.value)
-           }
+           },
+            // animate:'slow'
+            animate:true
         }).appendTo(control);
 
         // $('#books').cycle({
@@ -134,7 +136,8 @@
         var $books=$('#books');
        $books.find('.title').click(function () {
             $(this).resizable({
-                handle:'s'
+                // handle:'s'
+                grid: [ 10, 10 ]
             });
         })
     })
