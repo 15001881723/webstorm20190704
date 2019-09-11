@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="51bd6801-ddeb-4901-b07c-45d1be52d0b2" name="123" url="http://localhost:80">
+      <webServer id="69c89b51-c202-4b78-b269-265d75c81885" name="222" url="http://localhost:80">
         <fileTransfer port="0" mountedRoot="E:\wamp\www" accessType="MOUNT" />
       </webServer>
     </option>
